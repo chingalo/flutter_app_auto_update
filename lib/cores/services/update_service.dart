@@ -26,11 +26,16 @@ class UpdateService {
 
     final serverVersion = releaseInfo['version'] as String?;
     final apkUrl = releaseInfo['apk_url'] as String?;
+    final releaseNote = releaseInfo['releaseNote'] as String?;
     if (serverVersion == null || apkUrl == null) return null;
     final packageInfo = await PackageInfo.fromPlatform();
     final currentVersion = packageInfo.version;
     if (_isNewerVersion(serverVersion, currentVersion)) {
-      return {'version': serverVersion, 'apk_url': apkUrl};
+      return {
+        'version': serverVersion,
+        'apk_url': apkUrl,
+        'releaseNote': releaseNote,
+      };
     }
     return null;
   }

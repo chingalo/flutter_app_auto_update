@@ -21,6 +21,8 @@ class GitHubUpdateService {
       if (response.statusCode == 200) {
         final data = response.data as Map<String, dynamic>;
         final tagName = data['tag_name'] as String;
+        final body = data['body'] as String;
+        debugPrint(body);
         final version = tagName.startsWith('v')
             ? tagName.substring(1)
             : tagName;
@@ -41,7 +43,7 @@ class GitHubUpdateService {
           }
         }
         if (apkUrl != null) {
-          return {'version': version, 'apk_url': apkUrl};
+          return {'version': version, 'apk_url': apkUrl, 'releaseNote': body};
         }
       }
     } catch (e) {

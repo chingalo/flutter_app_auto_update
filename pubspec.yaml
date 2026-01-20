@@ -12,6 +12,7 @@ dependencies:
   dio: ^5.3.3
   package_info_plus: ^4.2.0
   path_provider: ^2.1.1
+  flutter_markdown: ^0.7.4+1
 
 dev_dependencies:
   flutter_test:

@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (updateInfo != null && mounted) {
       final String version = updateInfo['version'];
       final String apkUrl = updateInfo['apk_url'];
+      final String releaseNote = updateInfo['releaseNote'];
 
       final progressController = StreamController<double>();
 
@@ -60,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         barrierDismissible: false,
         builder: (context) => UpdateDialog(
           version: version,
+          releaseNote: releaseNote,
           progressStream: progressController.stream,
           onUpdate: () async {
             final filePath = await _updateService.downloadAPK(apkUrl, (
