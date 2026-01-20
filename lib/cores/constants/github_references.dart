@@ -1,5 +1,6 @@
 class GitHubReferences {
-  static const String owner = 'chingalo';
-  static const String repo = 'auto_update_app';
-  static const String apkKey = 'app_release';
+  //TODO Replace with correctly informations
+  static const String owner = 'hisptz';
+  static const String repo = 'timr-public-release';
+  static const String apkKey = 'prod';
 }

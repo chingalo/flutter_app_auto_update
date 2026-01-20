@@ -10,14 +10,12 @@ class UpdateService {
   final GitHubUpdateService _gitHubUpdateService = GitHubUpdateService();
   final Dio _dio = Dio();
 
-  //this is link to channel for access native codes
   static const platform = MethodChannel(
     'com.example.auto_update_app/installer',
   );
 
   Future<Map<String, dynamic>?> checkUpdate() async {
-    // Replace with correctly informations
-    final releaseInfo = await _gitHubUpdateService.getReleaseInfo(
+    final releaseInfo = await _gitHubUpdateService.getLatestGithubRelease(
       owner: GitHubReferences.owner,
       repo: GitHubReferences.repo,
       apkKey: GitHubReferences.apkKey,
@@ -27,16 +25,12 @@ class UpdateService {
 
     final serverVersion = releaseInfo['version'] as String?;
     final apkUrl = releaseInfo['apk_url'] as String?;
-
     if (serverVersion == null || apkUrl == null) return null;
-
     final packageInfo = await PackageInfo.fromPlatform();
     final currentVersion = packageInfo.version;
-
     if (_isNewerVersion(serverVersion, currentVersion)) {
       return {'version': serverVersion, 'apk_url': apkUrl};
     }
-
     return null;
   }
 
@@ -66,11 +60,11 @@ class UpdateService {
     try {
       final directory = await getExternalStorageDirectory();
       if (directory == null) return null;
-
-      final filePath = '${directory.path}/app-release.apk';
-
+      final uri = Uri.parse(url);
+      final filename = uri.pathSegments.last;
+      final filePath = '${directory.path}/$filename';
+      debugPrint('Downloading APK to: $filePath');
       await _dio.download(url, filePath, onReceiveProgress: onProgress);
-
       return filePath;
     } catch (e) {
       debugPrint('Error downloading APK: $e');
