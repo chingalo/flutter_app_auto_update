@@ -3,4 +3,5 @@ class GitHubReferences {
   static const String owner = 'hisptz';
   static const String repo = 'timr-public-release';
   static const String apkKey = 'prod';
+  static const String token = '';
 }

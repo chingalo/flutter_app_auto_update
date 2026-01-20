@@ -127,7 +127,6 @@ dependencies:
   dio: ^5.3.3                    # HTTP client for downloads
   package_info_plus: ^4.2.0      # Get current app version
   path_provider: ^2.1.1          # File system paths
-  url_launcher: ^6.2.1           # URL utilities
 ```
 
 **Dependencies Removed**:
@@ -431,8 +430,8 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 - `lib/main.dart` (update integration)
 - `AndroidManifest.xml` (permissions + provider)
 
-**Dependencies Added**: 4
-- dio, package_info_plus, path_provider, url_launcher
+**Dependencies Added**: 3
+- dio, package_info_plus, path_provider
 
 **Dependencies Removed**: 1
 - open_filex (replaced with native MethodChannel)

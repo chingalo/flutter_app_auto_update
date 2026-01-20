@@ -7,13 +7,17 @@ class GitHubUpdateService {
     required String owner,
     required String repo,
     required String apkKey,
+    String? token,
   }) async {
     try {
       final url = 'https://api.github.com/repos/$owner/$repo/releases/latest';
-      final response = await _dio.get(
-        url,
-        options: Options(headers: {'Accept': 'application/vnd.github.v3+json'}),
-      );
+      final headers = <String, String>{
+        'Accept': 'application/vnd.github.v3+json',
+      };
+      if (token != null && token.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $token';
+      }
+      final response = await _dio.get(url, options: Options(headers: headers));
       if (response.statusCode == 200) {
         final data = response.data as Map<String, dynamic>;
         final tagName = data['tag_name'] as String;

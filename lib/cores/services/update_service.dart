@@ -19,6 +19,7 @@ class UpdateService {
       owner: GitHubReferences.owner,
       repo: GitHubReferences.repo,
       apkKey: GitHubReferences.apkKey,
+      token: GitHubReferences.token,
     );
 
     if (releaseInfo == null) return null;
