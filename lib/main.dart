@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'cores/services/update_service.dart';
 import 'cores/components/update_dialog.dart';
@@ -38,9 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    // Check for updates after the first frame is rendered
+    // Check for updates after the first frame is rendered (Android only)
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkForUpdates();
+      if (Platform.isAndroid) {
+        _checkForUpdates();
+      }
     });
   }
 
