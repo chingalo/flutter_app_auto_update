@@ -1,4 +1,4 @@
-import 'package:auto_update_app/cores/constants/github_references.dart';
+import 'package:flutter_app_auto_update/cores/constants/github_references.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';

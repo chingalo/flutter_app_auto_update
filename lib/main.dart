@@ -75,14 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
             if (filePath != null) {
               await _updateService.installAPK(filePath);
-              if (mounted) Navigator.of(context).pop();
+              if (mounted) _popPage();
             } else {
               // Handle error (e.g., show a toast or another dialog)
               if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Failed to download update')),
-                );
-                Navigator.of(context).pop();
+                _showError('Failed to download update');
+                _popPage();
               }
             }
             progressController.close();
@@ -90,6 +88,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
     }
+  }
+
+  void _showError(String error) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
+  }
+
+  void _popPage() {
+    Navigator.of(context).pop();
   }
 
   @override

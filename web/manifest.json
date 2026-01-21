@@ -1,6 +1,6 @@
 {
-    "name": "auto_update_app",
-    "short_name": "auto_update_app",
+    "name": "flutter_app_auto_update",
+    "short_name": "flutter_app_auto_update",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

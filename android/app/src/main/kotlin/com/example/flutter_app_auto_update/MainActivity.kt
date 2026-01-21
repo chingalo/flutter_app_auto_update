@@ -1,4 +1,4 @@
-package com.example.auto_update_app
+package com.example.flutter_app_auto_update
 
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,7 @@ import io.flutter.plugin.common.MethodChannel
 import java.io.File
 
 class MainActivity : FlutterActivity() {
-    private val CHANNEL = "com.example.auto_update_app/installer"
+    private val CHANNEL = "com.example.flutter_app_auto_update/installer"
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)

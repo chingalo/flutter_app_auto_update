@@ -1,4 +1,4 @@
-name: auto_update_app
+name: flutter_app_auto_update
 description: "A new Flutter project."
 publish_to: 'none' 
 version: 0.0.1+1
