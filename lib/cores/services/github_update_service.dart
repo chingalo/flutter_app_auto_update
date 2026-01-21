@@ -22,7 +22,6 @@ class GitHubUpdateService {
         final data = response.data as Map<String, dynamic>;
         final tagName = data['tag_name'] as String;
         final body = data['body'] as String;
-        debugPrint(body);
         final version = tagName.startsWith('v')
             ? tagName.substring(1)
             : tagName;

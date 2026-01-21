@@ -40,28 +40,28 @@ class _UpdateDialogState extends State<UpdateDialog> {
               const Divider(),
               Container(
                 constraints: const BoxConstraints(maxHeight: 200),
-                child: Markdown(
-                  data: widget.releaseNote!,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  styleSheet: MarkdownStyleSheet(
-                    p: const TextStyle(fontSize: 14),
-                    h1: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    h2: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    h3: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    listBullet: const TextStyle(fontSize: 14),
-                    code: TextStyle(
-                      backgroundColor: Colors.grey[300],
-                      fontFamily: 'monospace',
+                child: SingleChildScrollView(
+                  child: MarkdownBody(
+                    data: widget.releaseNote!,
+                    styleSheet: MarkdownStyleSheet(
+                      p: const TextStyle(fontSize: 14),
+                      h1: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      h2: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      h3: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      listBullet: const TextStyle(fontSize: 14),
+                      code: TextStyle(
+                        backgroundColor: Colors.grey[300],
+                        fontFamily: 'monospace',
+                      ),
                     ),
                   ),
                 ),
