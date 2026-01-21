@@ -7,6 +7,7 @@ A Flutter application demonstrating automatic app updates via GitHub Releases fo
 ✨ **Automatic Update Checks** - Checks for new versions on app launch  
 📥 **GitHub Integration** - Fetches releases from GitHub API  
 🔐 **Private Repository Support** - Optional token authentication for private repos  
+📝 **Markdown Release Notes** - Beautifully formatted release notes with full markdown support  
 📊 **Progress Tracking** - Real-time download progress indicator  
 🔒 **Secure Installation** - FileProvider support for Android 7.0+  
 🎨 **Material 3 UI** - Modern, clean update dialog  
@@ -78,6 +79,9 @@ android/.../MainActivity.kt         # Native APK installation
 
 ## Documentation
 
+⚡ **[QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)**  
+Fast access guide with common tasks, markdown examples, and troubleshooting
+
 📚 **[AUTO_UPDATE_FEATURE.md](docs/AUTO_UPDATE_FEATURE.md)**  
 Complete feature guide with configuration, testing, and troubleshooting
 
@@ -99,10 +103,10 @@ User scenarios and experience flows
 ## Dependencies
 
 ```yaml
-dio: ^5.3.3               # HTTP client
-package_info_plus: ^4.2.0 # Version detection
-path_provider: ^2.1.1     # File paths
-url_launcher: ^6.2.1      # URL utilities
+dio: ^5.3.3                  # HTTP client
+package_info_plus: ^4.2.0    # Version detection
+path_provider: ^2.1.1        # File paths
+flutter_markdown: ^0.7.4+1   # Markdown rendering for release notes
 ```
 
 ## Platform Support
@@ -125,9 +129,53 @@ version: 1.0.0+1  # Update this before each release
 ```
 Tag: v1.0.0
 Title: Initial Release
+Description: (Optional markdown-formatted release notes)
 Assets:
   - app-prod-v1.0.0.apk
 ```
+
+> [!TIP]
+> Write your GitHub release description in **Markdown** format! The update dialog will render it with proper formatting including headers, lists, bold text, code blocks, and more.
+
+## Markdown Release Notes
+
+The update dialog supports **full markdown rendering** for GitHub release notes, making your updates more professional and informative.
+
+### Supported Markdown Features
+
+- **Headers**: `# H1`, `## H2`, `### H3`
+- **Bold**: `**bold text**`
+- **Italic**: `*italic text*`
+- **Lists**: `- bullet` or `1. numbered`
+- **Code**: `` `inline code` ``
+- **Code blocks**: ` ```language ... ``` `
+- **Links**: `[text](url)`
+- **Emojis**: ✨ 🎉 🐛 ⚡ 📝
+
+### Example Release Note
+
+When creating a GitHub release, write markdown in the description field:
+
+```markdown
+## 🎉 What's New in v1.0.0
+
+### ✨ New Features
+- **Dark mode support** - Toggle between light and dark themes
+- Private repository authentication
+- Markdown-formatted release notes
+
+### 🐛 Bug Fixes
+- Fixed download progress indicator
+- Resolved installation issues on Android 12+
+
+### ⚡ Performance
+- Reduced APK size by 20%
+- Faster update checks
+
+For more details, see the [full changelog](https://github.com/yourrepo/releases).
+```
+
+This will render beautifully in the update dialog with proper formatting, headers, and styling!
 
 ## Private Repository Support
 

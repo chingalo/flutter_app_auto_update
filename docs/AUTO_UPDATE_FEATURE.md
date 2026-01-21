@@ -21,6 +21,7 @@ The auto-update feature allows the Auto Update Demo app to automatically check f
 
 3. **UpdateDialog** (`lib/cores/components/update_dialog.dart`)
    - Displays update confirmation dialog
+   - Renders release notes with **full markdown support** (headers, lists, code, links, etc.)
    - Shows download progress with linear progress indicator
    - Handles user confirmation (Update Now / Later)
 
@@ -220,6 +221,68 @@ Authorization: Bearer ghp_YourGitHubTokenHere
 | ✅ Repository access | `repo` | Reading private repository releases |
 | ✅ Read releases | Included in `repo` | Fetching release data and assets |
 
+## Markdown Release Notes
+
+The update dialog includes **full markdown rendering support** for GitHub release notes, making your app updates more professional and informative.
+
+### Features
+
+The `UpdateDialog` component uses the `flutter_markdown` package to render release notes with:
+- ✅ Headers (H1, H2, H3)
+- ✅ **Bold** and *italic* text
+- ✅ Bullet and numbered lists
+- ✅ Inline and block code
+- ✅ Links
+- ✅ Emojis
+
+### How It Works
+
+1. GitHub release `body` (description) is fetched from the API
+2. Markdown content is passed through: `GitHubUpdateService` → `UpdateService` → `UpdateDialog`
+3. If release note exists, it's rendered in a scrollable container (max 200px height)
+4. Markdown is displayed with custom styling for optimal readability
+
+### Example GitHub Release
+
+When creating a GitHub release, write markdown in the description field:
+
+```markdown
+## 🎉 What's New in v1.0.0
+
+### ✨ New Features
+- **Dark mode support** - Toggle between light and dark themes
+- Private repository authentication with token
+- Markdown-formatted release notes
+
+### 🐛 Bug Fixes
+- Fixed download progress indicator
+- Resolved installation issues on Android 12+
+
+### ⚡ Performance Improvements
+- Reduced APK size by 20%
+- Faster update checks with caching
+
+See the [documentation](https://github.com/yourrepo) for details.
+```
+
+### Styling
+
+The markdown is rendered with:
+- **Paragraph text**: 14px
+- **Headers**: H1 (18px), H2 (16px), H3 (14px) - all bold
+- **Code blocks**: Monospace font with gray background
+- **Container**: Light gray background, rounded corners, bordered
+- **Max height**: 200px with internal scrolling
+
+### Best Practices
+
+> [!TIP]
+> - Keep release notes concise and scannable
+> - Use headers to organize different types of changes
+> - Use emojis to make notes more visually appealing
+> - Include links to detailed documentation or issues
+> - Test markdown rendering in a local environment first
+
 ## Testing
 
 ### Setup
@@ -239,6 +302,7 @@ flutter build apk --release
 - `dio: ^5.3.3` - HTTP client for API calls and APK downloads
 - `package_info_plus: ^4.2.0` - Get current app version
 - `path_provider: ^2.1.1` - File system path access
+- `flutter_markdown: ^0.7.4+1` - Markdown rendering for release notes
 
 ## Usage
 
@@ -285,8 +349,8 @@ To disable:
 
 ## Future Enhancements
 
-- Release notes display from GitHub release body
 - Mandatory vs optional updates based on version rules
 - Background update checks at intervals
 - Delta updates for smaller downloads
 - Multiple APK variants support
+- Automatic changelog generation from commit history

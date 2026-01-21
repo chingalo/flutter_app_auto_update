@@ -10,7 +10,7 @@ This document provides a quick reference for the auto-update feature implementat
 - `lib/cores/services/update_service.dart` - Update orchestration (version check, download, installation)
 
 ### UI Components
-- `lib/cores/components/update_dialog.dart` - Update confirmation dialog with progress indicator
+- `lib/cores/components/update_dialog.dart` - Update confirmation dialog with markdown-rendered release notes and progress indicator
 
 ### Configuration
 - `lib/cores/constants/github_references.dart` - Centralized GitHub repository configuration
@@ -28,10 +28,11 @@ This document provides a quick reference for the auto-update feature implementat
 ## Files Modified
 
 ### Dependencies
-- `pubspec.yaml` - Added 4 dependencies:
+- `pubspec.yaml` - Added 5 dependencies:
   - `dio: ^5.3.3` - HTTP client for API calls and downloads
   - `package_info_plus: ^4.2.0` - Current app version detection
   - `path_provider: ^2.1.1` - File system paths
+  - `flutter_markdown: ^0.7.4+1` - Markdown rendering for release notes
 
 ### App Configuration
 - `lib/main.dart` - Integrated update check on app launch with Platform.isAndroid check
